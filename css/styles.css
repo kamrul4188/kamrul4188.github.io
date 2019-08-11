@@ -34,7 +34,14 @@ body
 	height: 100vh;
 	float: left;
 	padding: 0 30px;
+	overflow: scroll;
+	overflow-x: hidden;
 
+}
+
+.profile-info::-webkit-scrollbar
+{
+	width: 0px;
 }
 
 .profile-info h1
@@ -65,9 +72,32 @@ body
 	margin-bottom: 15px;
 }
 
+.education img
+{
+	height: 50px;
+	margin: 5px;
+}
+
+.education
+{
+	display: inline-block;
+	width: 28%;
+	padding: 30px 10px;
+	margin: 2%;
+	text-align: center;
+	box-shadow: 0 0 15px 1px rgba(37, 73, 214, 0.18);
+	background-color: #fff;
+}
+
+.education small
+{
+	padding: 10px;
+	display: block;
+}
+
 .expertise img
 {
-	height: 30px;
+	height: 50px;
 	margin: 5px;
 }
 
@@ -86,4 +116,119 @@ body
 {
 	padding: 10px;
 	display: block;
+}
+
+.projects img
+{
+	width: 31%;
+	padding: 4px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+
+}
+.form-box
+{
+	margin-top: 30px;
+}
+.input-group
+{
+	width: 45%;
+	border: 0;
+	outline: none !important;
+	padding: 10px;
+	margin: 2%;
+	display: inline-block;
+	background: #fff;
+}
+
+.text-area textarea
+{
+	width: 95%;
+	border: 0;
+	outline: none !important;
+	padding: 10px;
+	margin: 2%;
+	background: #fff;
+}
+
+.submit-btn
+{
+	border: 0;
+	outline: none !important;
+	padding: 10px 20px;
+	margin: 2%;
+	background: #2ab0ff;
+	cursor: pointer;
+	color: #fff;
+}
+
+.contact img
+{
+	width: 20px;
+	margin: -5px 10px;
+}
+
+.contact span
+{
+	margin: 3%;
+}
+
+.contact
+{
+	margin: 5% 0 5% 25%;
+	width: 65%;
+}
+
+.compyright
+{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+@media only screen and (max-width:900px)
+{
+	.profile-info
+	{
+		width: 100%;
+		overflow: inherit;
+	}
+
+	.profile-img
+	{
+		width: 100%;
+	}
+
+	.education
+	{
+		width: 95%;
+		margin-bottom: 10%;
+	}
+
+	.education img
+	{
+		height: 20px;
+		margin: 10px 0;
+	}
+
+	.expertise
+	{
+		width: 95%;
+		margin-bottom: 10%;
+	}
+
+	.expertise img
+	{
+		height: 20px;
+		margin: 10px 0;
+	}
+
+	.projects img
+	{
+		width: 47%;
+	}
+	.span
+	{
+		display: block;
+
+	}
 }
