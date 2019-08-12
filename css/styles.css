@@ -120,46 +120,26 @@ body
 
 .projects img
 {
-	width: 31%;
-	padding: 4px;
-	margin-bottom: 5px;
-	margin-left: 5px;
+	height: 50px;
+	margin: 5px;
 
 }
-.form-box
+
+.projects
 {
-	margin-top: 30px;
-}
-.input-group
-{
-	width: 45%;
-	border: 0;
-	outline: none !important;
-	padding: 10px;
-	margin: 2%;
 	display: inline-block;
-	background: #fff;
+	width: 28%;
+	padding: 30px 10px;
+	margin: 2%;
+	text-align: center;
+	box-shadow: 0 0 15px 1px rgba(37, 73, 214, 0.18);
+	background-color: #fff;
 }
 
-.text-area textarea
+.projects small
 {
-	width: 95%;
-	border: 0;
-	outline: none !important;
 	padding: 10px;
-	margin: 2%;
-	background: #fff;
-}
-
-.submit-btn
-{
-	border: 0;
-	outline: none !important;
-	padding: 10px 20px;
-	margin: 2%;
-	background: #2ab0ff;
-	cursor: pointer;
-	color: #fff;
+	display: block;
 }
 
 .contact img
