@@ -142,22 +142,31 @@ body
 	display: block;
 }
 
-.contact img
+.projects-video
 {
-	width: 20px;
-	margin: -5px 10px;
+	display: inline-block;
+	width: 95%;
+	padding: 30px 10px;
+	margin: 2%;
+	text-align: center;
+	box-shadow: 0 0 15px 1px rgba(37, 73, 214, 0.18);
+	background-color: #fff;
 }
 
-.contact span
+.projects-video small
 {
-	margin: 3%;
+	padding: 10px;
+	display: block;
 }
 
-.contact
+.projects-video iframe
 {
-	margin: 5% 0 5% 25%;
-	width: 65%;
+	margin: 5px;
+	width: 560px;
+	height: 315px;
 }
+
+
 
 .compyright
 {
@@ -204,11 +213,26 @@ body
 
 	.projects img
 	{
-		width: 47%;
+		width: 20%;
 	}
 	.span
 	{
 		display: block;
 
 	}
+
+	.projects
+	{
+		width: 95%;
+		margin-bottom: 10%;
+
+	}
+
+	.projects-video iframe
+	{
+		margin: 5px;
+		width: 95%;
+		height: inherit;
+	}
+
 }
