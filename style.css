@@ -1,0 +1,14 @@
+body{
+    background-color: rgb(60, 49, 100);
+}
+
+h1{
+    color: white;
+    text-align: center;
+    margin-top: 20%;
+}
+
+h1:hover{
+    color: yellow;
+    font-size: 100px;
+}
