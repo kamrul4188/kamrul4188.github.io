@@ -1,7 +1,8 @@
-/*--HTML tag styling--*/
+/* --- style for HTML tags --- */
 body{
-    font-family: 'Poppins', sans-serif;
     margin: 0;
+    font-family: 'Poppins', sans-serif;
+    
 }
 
 h1{
@@ -12,77 +13,102 @@ h2{
     font-size: 40px;
 }
 
+h3{
+    font-size: 25px;
+}
+
+p{
+    text-align: justify;
+}
+
 footer p{
     text-align: center;
 }
+/* --- style for defined calass --- */
 
-/* Styling for class */
-.orange-color{
-    color:orange; 
+.flexible-area{
+    display: flex;
+    margin-bottom: 30px;
 }
 
-.flexible-container{
-    display:flex; 
-    margin-bottom: 50px;
+.summary-area{
+    background-image: url(images/top-banner.png);
+    background-repeat: no-repeat;
+}
+
+.education-area{
+    background-image: url(images/dream-bg.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    
+}
+
+.experience-area{
+    background-image: url(images/exp-bg.png);
+    background-repeat: no-repeat;
+}
+
+.experience-company{
+    width: 40%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 15px;
+    padding-right: 10px;
+    border-left: 15px solid;
+    border-radius: 10px;
+    box-shadow: 10px 10px 50px gray;
+    
 }
 
 .half-width{
     width: 50%;
-    padding: 5%
-
+    padding: 5%;
+    
 }
 
 .half-width img{
-    width: 100%
+    width: 100%;
+    
 }
 
 .link-button{
     text-decoration: none;
     color: white;
     font-weight: 700;
-    background-image: linear-gradient(orange, tomato);
     padding: 10px 40px;
     border-radius: 5px;
+    background-image: linear-gradient(orange, tomato);
+    
 }
 
-.top-banner{
-    background-image: url(images/top-banner.png);
-    background-repeat: no-repeat;
+.orange-color{
+    color: orange; 
 }
 
-.dream-big{
-    background-image: url(images/dream-bg.png);
-    background-repeat: no-repeat;
-    background-position: right;
+.gray-color{
+    color: rgba(128, 128, 128, 0.712); 
 }
 
-.experience-area{
-    background-image: url(images/exp-bg.png);
-    background-repeat: no-repeat;
-    background-position: left;
-}
-
-.experience-items{
-    width: 40%;
-    margin-left: 5%;
-    margin-right: 5%;
-    padding-left: 15px;
-    border-radius: 10px;
-    box-shadow: 10px 10px 50px gray;
+.navy-color{
+    color:navy;
 }
 
 
-/* Styling for diclared ID's */
-#web-dev-experience{
-    border-left: 10px solid;
-    border-image: linear-gradient(blue, cyan) ;
-    border-image-slice:1 ;
+/* --- style for IDs --- */
 
+#experience-header{
+    padding: 0% 5%;
 }
 
-#full-stack-experience{
-    border-left: 10px solid;
-    border-image: linear-gradient(salmon, tomato) ;
-    border-image-slice:1 ;
+#jurong-port{
+    
+    border-image: linear-gradient(orange, tomato);
+    border-image-slice: 1;
 }
+
+#des-marine{
+    border-image: linear-gradient(blue, rgb(224, 71, 255));
+    border-image-slice: 1;
+}
+
 
