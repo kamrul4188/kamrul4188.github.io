@@ -1,14 +1,88 @@
+/*--HTML tag styling--*/
 body{
-    background-color: rgb(60, 49, 100);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
 }
 
 h1{
-    color: white;
-    text-align: center;
-    margin-top: 20%;
+    font-size: 50px;
 }
 
-h1:hover{
-    color: yellow;
-    font-size: 100px;
+h2{
+    font-size: 40px;
 }
+
+footer p{
+    text-align: center;
+}
+
+/* Styling for class */
+.orange-color{
+    color:orange; 
+}
+
+.flexible-container{
+    display:flex; 
+    margin-bottom: 50px;
+}
+
+.half-width{
+    width: 50%;
+    padding: 5%
+
+}
+
+.half-width img{
+    width: 100%
+}
+
+.link-button{
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    background-image: linear-gradient(orange, tomato);
+    padding: 10px 40px;
+    border-radius: 5px;
+}
+
+.top-banner{
+    background-image: url(images/top-banner.png);
+    background-repeat: no-repeat;
+}
+
+.dream-big{
+    background-image: url(images/dream-bg.png);
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.experience-area{
+    background-image: url(images/exp-bg.png);
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+.experience-items{
+    width: 40%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 15px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 50px gray;
+}
+
+
+/* Styling for diclared ID's */
+#web-dev-experience{
+    border-left: 10px solid;
+    border-image: linear-gradient(blue, cyan) ;
+    border-image-slice:1 ;
+
+}
+
+#full-stack-experience{
+    border-left: 10px solid;
+    border-image: linear-gradient(salmon, tomato) ;
+    border-image-slice:1 ;
+}
+
