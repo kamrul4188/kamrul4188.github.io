@@ -94,6 +94,96 @@ footer p{
 }
 
 
+/* --- skills section --- */
+
+.skills-area {
+    padding: 3% 5%;
+    background-image: url(images/my-bg2.png);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+}
+
+.skills-area h2 {
+    margin-bottom: 20px;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.skill-tag {
+    background-image: linear-gradient(orange, tomato);
+    color: white;
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* --- certificates section --- */
+
+.certificates-area {
+    padding: 3% 5%;
+    background-color: #f9f9f9;
+}
+
+.certificates-area h2 {
+    margin-bottom: 20px;
+}
+
+.certificates-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.cert-group {
+    min-width: 200px;
+}
+
+.cert-group h4 {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.cert-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cert-group ul li {
+    margin-bottom: 6px;
+}
+
+.cert-group ul li a {
+    color: tomato;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.cert-group ul li a:hover {
+    text-decoration: underline;
+}
+
+/* --- education items --- */
+
+.education-item {
+    margin-bottom: 24px;
+}
+
+.education-item h4 {
+    margin: 4px 0 8px;
+    font-size: 15px;
+}
+
+.education-item ul {
+    padding-left: 20px;
+    font-size: 14px;
+}
+
 /* --- style for IDs --- */
 
 #experience-header{
