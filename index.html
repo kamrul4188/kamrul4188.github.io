@@ -283,6 +283,9 @@
       transition: border-color 0.2s, transform 0.2s;
     }
     .cert-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    a.cert-card { text-decoration: none; color: inherit; cursor: pointer; }
+    .cert-link-badge { font-size: 0.72rem; color: var(--accent); margin-top: 0.3rem; opacity: 0.75; }
+    a.cert-card:hover .cert-link-badge { opacity: 1; }
     .cert-icon {
       font-size: 1.4rem; flex-shrink: 0; width: 44px; height: 44px;
       background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2);
@@ -291,6 +294,40 @@
     .cert-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.2rem; line-height: 1.4; }
     .cert-issuer { color: var(--accent); font-size: 0.82rem; }
     .cert-date { color: var(--muted); font-size: 0.78rem; margin-top: 0.2rem; }
+
+    /* ===== PROJECTS ===== */
+    #projects { background: var(--bg); }
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+    .project-card {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .project-header { display: flex; align-items: flex-start; gap: 0.75rem; }
+    .project-icon { font-size: 1.5rem; flex-shrink: 0; width: 46px; height: 46px; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .project-title { font-weight: 700; font-size: 0.95rem; line-height: 1.4; margin-bottom: 0.15rem; }
+    .project-meta { color: var(--muted); font-size: 0.78rem; }
+    .project-org { color: var(--accent); font-size: 0.82rem; margin-bottom: 0.1rem; }
+    .project-desc { color: var(--text); font-size: 0.85rem; line-height: 1.6; opacity: 0.85; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.25rem; }
+    .project-tag { background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3); border-radius: 20px; padding: 0.2rem 0.65rem; font-size: 0.75rem; color: var(--text); }
+
+    /* ===== CREDLY BADGES ===== */
+    .credly-badge {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      background: var(--surface2);
+      border: 1px solid rgba(0,212,255,0.25);
+      border-radius: 10px; padding: 0.75rem 1rem;
+      text-decoration: none; color: var(--text);
+      transition: border-color 0.2s, transform 0.2s;
+      flex: 1 1 240px; max-width: 340px;
+    }
+    .credly-badge:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .credly-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
+    .credly-name { font-size: 0.85rem; font-weight: 600; line-height: 1.3; margin-bottom: 0.2rem; }
+    .credly-meta { font-size: 0.75rem; color: var(--accent); }
 
     /* ===== CONTACT ===== */
     #contact { background: var(--bg); }
@@ -358,6 +395,7 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#certifications">Certifications</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -375,6 +413,7 @@
     <a href="#skills" onclick="closeMobile()">Skills</a>
     <a href="#experience" onclick="closeMobile()">Experience</a>
     <a href="#education" onclick="closeMobile()">Education</a>
+    <a href="#projects" onclick="closeMobile()">Projects</a>
     <a href="#certifications" onclick="closeMobile()">Certifications</a>
     <a href="#contact" onclick="closeMobile()">Contact</a>
     <a href="docs/MD-KAMRUZZAMAN.pdf" download style="color:var(--accent);">↓ Download Resume</a>
@@ -400,7 +439,7 @@
             <div class="stat-label">Companies</div>
           </div>
           <div class="stat">
-            <div class="stat-number">10+</div>
+            <div class="stat-number">40+</div>
             <div class="stat-label">Certifications</div>
           </div>
           <div class="stat">
@@ -415,7 +454,7 @@
         </div>
       </div>
       <div class="hero-photo-wrap">
-        <img src="images/kamrul1.png" alt="Md Kamruzzaman" class="hero-photo" />
+        <img src="images/MyPhoto.jpg" alt="Md Kamruzzaman" class="hero-photo" />
       </div>
     </div>
   </section>
@@ -763,6 +802,104 @@
     </div>
   </section>
 
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-dot"></div>
+        <h2>Projects</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="project-grid fade-in">
+
+        <!-- FYP: HVAC Controller -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">🌡️</div>
+            <div>
+              <div class="project-title">HVAC Controller — Remote Monitoring &amp; Control</div>
+              <div class="project-org">National University of Singapore (Final Year Project)</div>
+              <div class="project-meta">Jan 2019 – Dec 2019</div>
+            </div>
+          </div>
+          <div class="project-desc">
+            Designed an HVAC controller for ship Engine Control Rooms capable of local and remote monitoring. The system monitors room temperature, oxygen level, humidity, and chiller operation, raising alarms for abnormal conditions including fire, high/low temperature, oxygen levels, and chiller pressure faults.
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">PLC</span>
+            <span class="project-tag">Node-RED</span>
+            <span class="project-tag">HVAC</span>
+            <span class="project-tag">Remote Monitoring</span>
+          </div>
+        </div>
+
+        <!-- Amyca -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">🤖</div>
+            <div>
+              <div class="project-title">Amyca — Project Management Assistant</div>
+              <div class="project-org">National University of Singapore · TE3201 Software Engineering</div>
+              <div class="project-meta">Jan 2019 – Apr 2019</div>
+            </div>
+          </div>
+          <div class="project-desc">
+            Built a user-friendly project management chatbot in Python 3 (OOP) supporting both text-based command interface and a graphical user interface. Designed to help teams track tasks and project milestones.
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">OOP</span>
+            <span class="project-tag">GUI</span>
+            <span class="project-tag">Chatbot</span>
+          </div>
+        </div>
+
+        <!-- Brick Breaker Game -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">🎮</div>
+            <div>
+              <div class="project-title">Brick Breaker Game — ZedBoard FPGA</div>
+              <div class="project-org">National University of Singapore · EE4214E Real-Time Embedded Systems</div>
+              <div class="project-meta">Jan 2017 – Apr 2017</div>
+            </div>
+          </div>
+          <div class="project-desc">
+            Implemented a real-time brick breaker game on a ZedBoard FPGA using C. Features include dynamic score tracking, ball speed adjustment, remaining brick count, and a gameplay timer — all controlled via hardware buttons.
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">C</span>
+            <span class="project-tag">FPGA / ZedBoard</span>
+            <span class="project-tag">Real-Time Systems</span>
+            <span class="project-tag">Embedded</span>
+          </div>
+        </div>
+
+        <!-- Automated Watering System -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">🌱</div>
+            <div>
+              <div class="project-title">Automated Plant Watering &amp; Detection System</div>
+              <div class="project-org">National University of Singapore · EE2031 Device &amp; Circuit Lab</div>
+              <div class="project-meta">Jan 2016 – Apr 2016</div>
+            </div>
+          </div>
+          <div class="project-desc">
+            Developed an automated watering system using a soil moisture sensor to detect low water levels and trigger a pump. A piezo water detection sensor monitors flow and triggers an alarm if water stops being delivered to the plant.
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Sensors</span>
+            <span class="project-tag">Circuit Design</span>
+            <span class="project-tag">Automation</span>
+            <span class="project-tag">IoT</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- CERTIFICATIONS -->
   <section id="certifications">
     <div class="container">
@@ -771,7 +908,64 @@
         <h2>Licenses & Certifications</h2>
         <div class="section-line"></div>
       </div>
+
+      <!-- Credly badge strip -->
+      <div style="margin-bottom:2rem;" class="fade-in">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+          <span style="font-size:0.8rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">Verified Credly Badges</span>
+          <div style="flex:1;height:1px;background:var(--border);"></div>
+          <a href="https://www.credly.com/users/kamrul4188/badges" target="_blank"
+             style="font-size:0.8rem;color:var(--accent);text-decoration:none;white-space:nowrap;">View all on Credly ↗</a>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+          <a href="https://www.credly.com/users/kamrul4188/badges" target="_blank" class="credly-badge">
+            <span class="credly-icon">🌐</span>
+            <div>
+              <div class="credly-name">CCNA: Enterprise Networking, Security &amp; Automation</div>
+              <div class="credly-meta">Cisco · Dec 2023</div>
+            </div>
+          </a>
+          <a href="https://www.credly.com/users/kamrul4188/badges" target="_blank" class="credly-badge">
+            <span class="credly-icon">🌐</span>
+            <div>
+              <div class="credly-name">CCNA: Switching, Routing &amp; Wireless Essentials</div>
+              <div class="credly-meta">Cisco · Jul 2023</div>
+            </div>
+          </a>
+          <a href="https://www.credly.com/users/kamrul4188/badges" target="_blank" class="credly-badge">
+            <span class="credly-icon">🌐</span>
+            <div>
+              <div class="credly-name">CCNA: Introduction to Networks</div>
+              <div class="credly-meta">Cisco · May 2023</div>
+            </div>
+          </a>
+          <a href="https://www.credly.com/users/kamrul4188/badges" target="_blank" class="credly-badge">
+            <span class="credly-icon">🌐</span>
+            <div>
+              <div class="credly-name">Networking Basics</div>
+              <div class="credly-meta">Cisco · Jan 2024</div>
+            </div>
+          </a>
+          <a href="https://www.credly.com/users/kamrul4188/badges" target="_blank" class="credly-badge">
+            <span class="credly-icon">🎓</span>
+            <div>
+              <div class="credly-name">Verified International Academic Qualifications</div>
+              <div class="credly-meta">World Education Services · Nov 2022</div>
+            </div>
+          </a>
+          <a href="https://www.credly.com/users/kamrul4188/badges" target="_blank" class="credly-badge">
+            <span class="credly-icon">💻</span>
+            <div>
+              <div class="credly-name">Google IT Support Certificate</div>
+              <div class="credly-meta">Coursera · Sep 2018</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- All certifications -->
       <div class="cert-grid fade-in">
+        <!-- PLC / Industrial Automation -->
         <div class="cert-card">
           <div class="cert-icon">🤖</div>
           <div>
@@ -780,68 +974,111 @@
             <div class="cert-date">May 2025</div>
           </div>
         </div>
-        <div class="cert-card">
+        <a class="cert-card" href="https://learn.realpars.com/certificates/sc6yaobiuw" target="_blank" rel="noopener noreferrer">
           <div class="cert-icon">⚙️</div>
           <div>
             <div class="cert-name">Mastering Allen-Bradley PLCs</div>
             <div class="cert-issuer">RealPars</div>
             <div class="cert-date">Jul 2025</div>
+            <div class="cert-link-badge">View Credential ↗</div>
           </div>
-        </div>
-        <div class="cert-card">
+        </a>
+        <a class="cert-card" href="https://learn.realpars.com/certificates/0ms41dpj3c" target="_blank" rel="noopener noreferrer">
           <div class="cert-icon">⚙️</div>
           <div>
             <div class="cert-name">Mastering Schneider M580 PLC with EcoStruxure</div>
             <div class="cert-issuer">RealPars</div>
             <div class="cert-date">Jul 2025</div>
+            <div class="cert-link-badge">View Credential ↗</div>
           </div>
-        </div>
-        <div class="cert-card">
+        </a>
+        <a class="cert-card" href="https://learn.realpars.com/certificates/dnbqfxwims" target="_blank" rel="noopener noreferrer">
           <div class="cert-icon">💻</div>
           <div>
-            <div class="cert-name">Learn How to Program Allen Bradley PLCs Using Studio 5000</div>
+            <div class="cert-name">Learn How to Program Allen Bradley PLCs – Studio 5000</div>
             <div class="cert-issuer">RealPars</div>
             <div class="cert-date">Jul 2025</div>
+            <div class="cert-link-badge">View Credential ↗</div>
           </div>
-        </div>
-        <div class="cert-card">
+        </a>
+        <a class="cert-card" href="https://www.linkedin.com/learning/certificates/c93235441c98516ef278271281145a3cd2bac9bb01ce5dfa8c7230fb8ddfbc2b/" target="_blank" rel="noopener noreferrer">
           <div class="cert-icon">📊</div>
           <div>
             <div class="cert-name">Learning SCADA: Collect, Analyze, and Visualize Data</div>
             <div class="cert-issuer">LinkedIn Learning</div>
             <div class="cert-date">Apr 2025</div>
+            <div class="cert-link-badge">View Credential ↗</div>
           </div>
-        </div>
-        <div class="cert-card">
-          <div class="cert-icon">🌐</div>
+        </a>
+        <a class="cert-card" href="https://www.linkedin.com/learning/certificates/7bd46b2e0871272d94bc7898191b5c1b4f82f0b8d38850799b35a8d6d882c376/" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">🤖</div>
           <div>
-            <div class="cert-name">CCNA: Enterprise Networking, Security, and Automation</div>
-            <div class="cert-issuer">Cisco</div>
-            <div class="cert-date">Dec 2023</div>
+            <div class="cert-name">Learning Industrial Automation</div>
+            <div class="cert-issuer">LinkedIn Learning</div>
+            <div class="cert-date">Apr 2021</div>
+            <div class="cert-link-badge">View Credential ↗</div>
           </div>
-        </div>
-        <div class="cert-card">
-          <div class="cert-icon">🌐</div>
+        </a>
+        <a class="cert-card" href="https://kamrul4188.github.io/certificate/PLC/Omron%20PLC_HMI%20intrigration.pdf" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">⚙️</div>
           <div>
-            <div class="cert-name">Networking Basics</div>
-            <div class="cert-issuer">Cisco</div>
-            <div class="cert-date">Jan 2024</div>
+            <div class="cert-name">Introduction to HMI/PLC Integration</div>
+            <div class="cert-issuer">OMRON Asia Pacific</div>
+            <div class="cert-date">Nov 2012</div>
+            <div class="cert-link-badge">View Credential ↗</div>
           </div>
-        </div>
-        <div class="cert-card">
-          <div class="cert-icon">🛡️</div>
+        </a>
+        <a class="cert-card" href="https://kamrul4188.github.io/certificate/PLC/SIEMENS%20S-7%20Programming%20Basic.pdf" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">⚙️</div>
           <div>
-            <div class="cert-name">Certified Protege WXpert (Level 2)</div>
-            <div class="cert-issuer">Integrated Control Technology</div>
-            <div class="cert-date">Jun 2024</div>
+            <div class="cert-name">S7-300 Programming Basic</div>
+            <div class="cert-issuer">Siemens</div>
+            <div class="cert-date">Nov 2012</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <a class="cert-card" href="https://kamrul4188.github.io/certificate/PLC/WSQ%20Implimant%20PLC%20in%20Control%20System.pdf" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">⚙️</div>
+          <div>
+            <div class="cert-name">WSQ Implement PLC in Control System</div>
+            <div class="cert-issuer">Singapore Polytechnic</div>
+            <div class="cert-date">Oct 2012</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <a class="cert-card" href="https://kamrul4188.github.io/certificate/PLC/Introduction%20to%20PLC%20Progrming.pdf" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">⚙️</div>
+          <div>
+            <div class="cert-name">Introduction to PLC Programming</div>
+            <div class="cert-issuer">Institute of Technical Education</div>
+            <div class="cert-date">Mar 2010</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <!-- Security & Safety -->
+        <div class="cert-card">
+          <div class="cert-icon">🩺</div>
+          <div>
+            <div class="cert-name">Essential First Aid Course</div>
+            <div class="cert-issuer">New Zealand Red Cross</div>
+            <div class="cert-date">Dec 2024 · Expires Dec 2026</div>
           </div>
         </div>
-        <div class="cert-card">
+        <a class="cert-card" href="https://www.udemy.com/certificate/UC-700a85ce-ae64-40fd-bd96-4f856669c215/" target="_blank" rel="noopener noreferrer">
           <div class="cert-icon">📷</div>
           <div>
             <div class="cert-name">Security Camera Systems</div>
             <div class="cert-issuer">Udemy</div>
             <div class="cert-date">Oct 2024</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <div class="cert-card">
+          <div class="cert-icon">🛡️</div>
+          <div>
+            <div class="cert-name">Certified Protege WXpert (Level 2)</div>
+            <div class="cert-issuer">Integrated Control Technology (ICT)</div>
+            <div class="cert-date">Jun 2024</div>
           </div>
         </div>
         <div class="cert-card">
@@ -852,12 +1089,254 @@
             <div class="cert-date">Apr 2024 · Expires Apr 2029</div>
           </div>
         </div>
-        <div class="cert-card">
-          <div class="cert-icon">🩺</div>
+        <a class="cert-card" href="http://www.muktopaath.gov.bd/certificate/check/MC-B230305I434366L106A" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">🔒</div>
           <div>
-            <div class="cert-name">Essential First Aid Course</div>
-            <div class="cert-issuer">New Zealand Red Cross</div>
-            <div class="cert-date">Dec 2024 · Expires Dec 2026</div>
+            <div class="cert-name">Digital Security Essentials</div>
+            <div class="cert-issuer">Digital Security Agency</div>
+            <div class="cert-date">Jan 2020</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <a class="cert-card" href="https://kamrul4188.github.io/certificate/Safety/Shipyard%20Supervisor%20Safety%20Course.pdf" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">🦺</div>
+          <div>
+            <div class="cert-name">Shipyard Supervisors Safety Course</div>
+            <div class="cert-issuer">NTUC LearningHub</div>
+            <div class="cert-date">Dec 2010</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <!-- Networking / Cisco -->
+        <a class="cert-card" href="https://www.credly.com/badges/87b6dab8-6590-47bb-b219-470d92a601f6/linked_in_profile" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">🌐</div>
+          <div>
+            <div class="cert-name">Networking Basics</div>
+            <div class="cert-issuer">Cisco · Credly Verified</div>
+            <div class="cert-date">Jan 2024</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <a class="cert-card" href="https://www.credly.com/badges/694df574-0063-4ecd-86fb-05290172d3cd/linked_in_profile" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">🌐</div>
+          <div>
+            <div class="cert-name">CCNA: Enterprise Networking, Security &amp; Automation</div>
+            <div class="cert-issuer">Cisco · Credly Verified</div>
+            <div class="cert-date">Dec 2023</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <a class="cert-card" href="https://www.credly.com/badges/04e2e34f-f079-41e1-a3a4-75f36fa8a55c/linked_in_profile" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">🌐</div>
+          <div>
+            <div class="cert-name">CCNA: Switching, Routing &amp; Wireless Essentials</div>
+            <div class="cert-issuer">Cisco · Credly Verified</div>
+            <div class="cert-date">Jul 2023</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <a class="cert-card" href="https://www.udemy.com/certificate/UC-c068cfb7-da6c-4beb-93a6-983c7ca429bc/" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">🌐</div>
+          <div>
+            <div class="cert-name">Complete Cisco CCNA 200-301 Course</div>
+            <div class="cert-issuer">Udemy</div>
+            <div class="cert-date">Jul 2023</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <a class="cert-card" href="https://www.credly.com/badges/818654d2-6df7-4830-9c29-190d669c3cbc/linked_in_profile" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">🌐</div>
+          <div>
+            <div class="cert-name">CCNA: Introduction to Networks</div>
+            <div class="cert-issuer">Cisco · Credly Verified</div>
+            <div class="cert-date">May 2023</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <a class="cert-card" href="https://www.linkedin.com/learning/certificates/2803f0bfa34ee18ebbb30f5dd7ed77fdf71174d3df2326b0d8b89aa537be6a7e/" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">🌐</div>
+          <div>
+            <div class="cert-name">Prepare for the Cisco CCNA (200-301) Exam</div>
+            <div class="cert-issuer">LinkedIn Learning</div>
+            <div class="cert-date">Sep 2022</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <div class="cert-card">
+          <div class="cert-icon">🌐</div>
+          <div>
+            <div class="cert-name">CCNA Routing &amp; Switching: Essentials, Intro to Networks, Connecting &amp; Scaling</div>
+            <div class="cert-issuer">American International University-Bangladesh</div>
+            <div class="cert-date">Mar 2018</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">🌐</div>
+          <div>
+            <div class="cert-name">Connecting Things</div>
+            <div class="cert-issuer">American International University-Bangladesh</div>
+            <div class="cert-date">May 2018</div>
+          </div>
+        </div>
+        <a class="cert-card" href="https://www.coursera.org/account/accomplishments/verify/5PG32QCZWLSP" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">🌐</div>
+          <div>
+            <div class="cert-name">Internet Connection: How to Get Online?</div>
+            <div class="cert-issuer">Coursera</div>
+            <div class="cert-date">Jan 2019</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <!-- Python / Data -->
+        <a class="cert-card" href="https://www.datacamp.com/statement-of-accomplishment/course/49d2f993aeea7303f1e43059e583de8e16fce722" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">🐍</div>
+          <div>
+            <div class="cert-name">Intermediate Python</div>
+            <div class="cert-issuer">DataCamp</div>
+            <div class="cert-date">May 2020</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <a class="cert-card" href="https://www.datacamp.com/statement-of-accomplishment/course/0ec62a8063c4c64fd7943390eb2ed09c838b1519" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">🐍</div>
+          <div>
+            <div class="cert-name">Introduction to Python</div>
+            <div class="cert-issuer">DataCamp</div>
+            <div class="cert-date">May 2020</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <a class="cert-card" href="https://courses.edx.org/certificates/1074711c274840e8b712fb4032bdd51e" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">🐍</div>
+          <div>
+            <div class="cert-name">Using Python for Research</div>
+            <div class="cert-issuer">EdX</div>
+            <div class="cert-date">Jun 2020</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <!-- Design & Software -->
+        <div class="cert-card">
+          <div class="cert-icon">🎨</div>
+          <div>
+            <div class="cert-name">Graphic Design</div>
+            <div class="cert-issuer">CodersTrust Bangladesh</div>
+            <div class="cert-date">Feb 2023</div>
+          </div>
+        </div>
+        <a class="cert-card" href="https://kamrul4188.github.io/certificate/AutoCAD/NTUC%20AutoCAD%202012%20Essentials.pdf" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">📐</div>
+          <div>
+            <div class="cert-name">Autodesk AutoCAD 2012 Essentials</div>
+            <div class="cert-issuer">NTUC LearningHub</div>
+            <div class="cert-date">Sep 2012</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <a class="cert-card" href="https://kamrul4188.github.io/certificate/MS%20Office/Microsoft-Office-Course.pdf" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">💼</div>
+          <div>
+            <div class="cert-name">Microsoft Office</div>
+            <div class="cert-issuer">The Institution of Engineers, Bangladesh (IEB)</div>
+            <div class="cert-date">Jan 2008</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <a class="cert-card" href="https://kamrul4188.github.io/certificate/IT/Computer%20Repair%20and%20Maintenance.pdf" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">🖥️</div>
+          <div>
+            <div class="cert-name">Computer Repair &amp; Maintenance</div>
+            <div class="cert-issuer">Institute of Technical Education</div>
+            <div class="cert-date">May 2010</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <!-- Soft Skills / Leadership -->
+        <a class="cert-card" href="https://10minuteschool.com/certificate/64e1f67e3fa1d" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">🗣️</div>
+          <div>
+            <div class="cert-name">Communication Masterclass</div>
+            <div class="cert-issuer">10 Minute School</div>
+            <div class="cert-date">Aug 2023</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <a class="cert-card" href="https://www.linkedin.com/learning/certificates/4ba69c8e6dc14be579007f4fd2f9ba8741b1f7d47be33e918f5fd380e8ed46d7/" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">🧠</div>
+          <div>
+            <div class="cert-name">Building Resilience as a Leader</div>
+            <div class="cert-issuer">LinkedIn Learning</div>
+            <div class="cert-date">Apr 2021</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <div class="cert-card">
+          <div class="cert-icon">🎯</div>
+          <div>
+            <div class="cert-name">Enhance Your Career and Employability Skills</div>
+            <div class="cert-issuer">Coursera</div>
+            <div class="cert-date">Jul 2014</div>
+          </div>
+        </div>
+        <a class="cert-card" href="https://www.coursera.org/account/accomplishments/verify/Q4YHHTPPNRBW" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">🏷️</div>
+          <div>
+            <div class="cert-name">Introduction to Personal Branding</div>
+            <div class="cert-issuer">Coursera</div>
+            <div class="cert-date">Feb 2016</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <!-- Academic / Language -->
+        <a class="cert-card" href="https://www.credly.com/badges/8c8c2673-f15b-46c9-92a4-5387c8808097/linked_in_profile" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">🎓</div>
+          <div>
+            <div class="cert-name">Verified International Academic Qualifications</div>
+            <div class="cert-issuer">World Education Services (WES) · Credly Verified</div>
+            <div class="cert-date">Nov 2022</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <a class="cert-card" href="https://www.coursera.org/account/accomplishments/specialization/DRQGXSFBCYBN" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">💻</div>
+          <div>
+            <div class="cert-name">Google IT Support Certificate</div>
+            <div class="cert-issuer">Coursera · Credly Verified</div>
+            <div class="cert-date">Sep 2018</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <a class="cert-card" href="https://kamrul4188.github.io/certificate/EE/SET1.pdf" target="_blank" rel="noopener noreferrer">
+          <div class="cert-icon">⚡</div>
+          <div>
+            <div class="cert-name">ITE Skill Evaluation — Marine Electrical Technology (Level 1)</div>
+            <div class="cert-issuer">Institute of Technical Education</div>
+            <div class="cert-date">Sep 2011</div>
+            <div class="cert-link-badge">View Credential ↗</div>
+          </div>
+        </a>
+        <div class="cert-card">
+          <div class="cert-icon">🔬</div>
+          <div>
+            <div class="cert-name">Preparatory Physics for University</div>
+            <div class="cert-issuer">Singapore Polytechnic</div>
+            <div class="cert-date">Jun 2012</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">📐</div>
+          <div>
+            <div class="cert-name">Preparatory Mathematics for University</div>
+            <div class="cert-issuer">Singapore Polytechnic</div>
+            <div class="cert-date">Jun 2012</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">🗣️</div>
+          <div>
+            <div class="cert-name">Spoken English Language Course</div>
+            <div class="cert-issuer">FM English Language Teaching Research Institute</div>
+            <div class="cert-date">Mar 2008</div>
           </div>
         </div>
       </div>
