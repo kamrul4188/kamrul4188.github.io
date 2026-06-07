@@ -1,39 +1,978 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MD KAMRUZZAMAN</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Md Kamruzzaman — Industrial Electrician & Automation Engineer</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface2: #1f2937;
+      --border: #30363d;
+      --accent: #00d4ff;
+      --accent2: #7c3aed;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --success: #3fb950;
+    }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,17,23,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      font-weight: 800; font-size: 1.1rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      flex-shrink: 0;
+    }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px; border: none; background: none;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text); border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 60px; left: 0; right: 0;
+      background: rgba(13,17,23,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      z-index: 99;
+      flex-direction: column; gap: 1.25rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--text); text-decoration: none; font-size: 1rem;
+      padding: 0.5rem 0; border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 6rem 2rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,212,255,0.08) 0%, transparent 70%),
+                  radial-gradient(ellipse 60% 40% at 80% 80%, rgba(124,58,237,0.08) 0%, transparent 70%);
+    }
+    .hero-inner {
+      position: relative; max-width: 1000px; width: 100%;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 3rem; align-items: center;
+    }
+    .hero-text { max-width: 620px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(0,212,255,0.1);
+      border: 1px solid rgba(0,212,255,0.3);
+      color: var(--accent);
+      padding: 0.3rem 1rem;
+      border-radius: 999px;
+      font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 800; line-height: 1.1; margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, #fff 30%, var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-typing-wrap {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--muted); margin-bottom: 0.5rem; min-height: 1.8em;
+    }
+    .typing-cursor {
+      display: inline-block; width: 2px; height: 1em;
+      background: var(--accent); margin-left: 2px;
+      vertical-align: middle; animation: blink 0.9s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .hero-location {
+      color: var(--muted); font-size: 0.9rem;
+      display: flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem;
+    }
+    .hero-stats { display: flex; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .stat { text-align: left; }
+    .stat-number {
+      font-size: 1.8rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-label { color: var(--muted); font-size: 0.78rem; }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* Profile photo */
+    .hero-photo-wrap {
+      flex-shrink: 0; width: 220px; height: 220px; position: relative;
+    }
+    .hero-photo-wrap::before {
+      content: ''; position: absolute; inset: -6px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2)); z-index: 0;
+    }
+    .hero-photo-wrap::after {
+      content: ''; position: absolute; inset: -3px; border-radius: 50%;
+      background: var(--bg); z-index: 1;
+    }
+    .hero-photo {
+      position: relative; z-index: 2; width: 100%; height: 100%;
+      border-radius: 50%; object-fit: cover; object-position: top center; display: block;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.75rem; border-radius: 8px;
+      text-decoration: none; font-weight: 600; font-size: 0.9rem;
+      transition: all 0.25s; border: none; cursor: pointer;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,212,255,0.25); }
+    .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .btn-ghost { background: transparent; border: 1px solid rgba(0,212,255,0.3); color: var(--accent); }
+    .btn-ghost:hover { background: rgba(0,212,255,0.08); transform: translateY(-2px); }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem; }
+    .section-header h2 { font-size: 1.75rem; font-weight: 700; }
+    .section-line { flex: 1; height: 1px; background: linear-gradient(to right, var(--border), transparent); }
+    .section-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+
+    /* ===== ABOUT ===== */
+    #about { background: var(--surface); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .about-highlights { display: flex; flex-direction: column; gap: 1rem; }
+    .highlight-card {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.25rem;
+      display: flex; align-items: flex-start; gap: 1rem; transition: border-color 0.2s;
+    }
+    .highlight-card:hover { border-color: var(--accent); }
+    .highlight-icon {
+      font-size: 1.4rem; flex-shrink: 0; width: 40px; height: 40px;
+      background: rgba(0,212,255,0.1); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .highlight-card h4 { font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .highlight-card p { font-size: 0.85rem; color: var(--muted); }
+
+    /* ===== SKILLS ===== */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    .skill-category {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem; transition: border-color 0.2s, transform 0.2s;
+    }
+    .skill-category:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .skill-category-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+    .skill-category-icon { font-size: 1.4rem; }
+    .skill-category h3 { font-size: 1rem; font-weight: 600; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-tag {
+      background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2);
+      color: var(--accent); padding: 0.25rem 0.65rem;
+      border-radius: 6px; font-size: 0.8rem; font-weight: 500;
+    }
+
+    /* ===== EXPERIENCE ===== */
+    #experience { background: var(--surface); }
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+    }
+    .timeline-item { position: relative; margin-bottom: 2.5rem; padding-left: 1.5rem; }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -2.45rem; top: 0.4rem;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent); border: 2px solid var(--bg);
+      box-shadow: 0 0 0 3px rgba(0,212,255,0.2);
+    }
+    .timeline-item:hover .exp-card { border-color: var(--accent); }
+    .exp-card {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem; transition: border-color 0.2s;
+    }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+    .exp-title { font-size: 1.05rem; font-weight: 700; }
+    .exp-company { color: var(--accent); font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem; }
+    .exp-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+    .exp-badge {
+      background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3);
+      color: #a78bfa; padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.75rem;
+    }
+    .exp-date, .exp-location { color: var(--muted); font-size: 0.85rem; }
+    .exp-desc { list-style: none; }
+    .exp-desc li {
+      color: var(--muted); font-size: 0.9rem; padding: 0.3rem 0 0.3rem 1rem;
+      position: relative; line-height: 1.6;
+    }
+    .exp-desc li::before {
+      content: '▸'; position: absolute; left: 0;
+      color: var(--accent); font-size: 0.7rem; top: 0.4rem;
+    }
+
+    /* ===== EDUCATION ===== */
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    .edu-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s; position: relative; overflow: hidden;
+    }
+    .edu-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+    .edu-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .edu-school { font-weight: 700; font-size: 1rem; margin-bottom: 0.3rem; }
+    .edu-degree { color: var(--accent); font-size: 0.9rem; margin-bottom: 0.3rem; }
+    .edu-period { color: var(--muted); font-size: 0.85rem; margin-bottom: 0.5rem; }
+    .edu-grade {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(63,185,80,0.1); border: 1px solid rgba(63,185,80,0.3);
+      color: var(--success); padding: 0.2rem 0.6rem;
+      border-radius: 6px; font-size: 0.8rem; font-weight: 600;
+    }
+
+    /* ===== CERTIFICATIONS ===== */
+    #certifications { background: var(--surface); }
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+    .cert-card {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.25rem;
+      display: flex; align-items: flex-start; gap: 1rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .cert-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .cert-icon {
+      font-size: 1.4rem; flex-shrink: 0; width: 44px; height: 44px;
+      background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    }
+    .cert-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.2rem; line-height: 1.4; }
+    .cert-issuer { color: var(--accent); font-size: 0.82rem; }
+    .cert-date { color: var(--muted); font-size: 0.78rem; margin-top: 0.2rem; }
+
+    /* ===== CONTACT ===== */
+    #contact { background: var(--bg); }
+    .contact-inner { max-width: 620px; margin: 0 auto; text-align: center; }
+    .contact-inner p { color: var(--muted); margin-bottom: 2.5rem; line-height: 1.8; font-size: 1.05rem; }
+    .contact-cards {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem; margin-bottom: 2.5rem;
+    }
+    .contact-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem;
+      text-decoration: none; color: var(--text);
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .contact-card:hover { border-color: var(--accent); transform: translateY(-3px); color: var(--accent); }
+    .contact-card-icon {
+      width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+      background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.2);
+      display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+    }
+    .contact-card-label { font-size: 0.78rem; color: var(--muted); }
+    .contact-card-value { font-size: 0.9rem; font-weight: 600; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--surface); border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem; text-align: center;
+    }
+    .footer-name {
+      font-size: 1.2rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 0.3rem;
+    }
+    .footer-copy { color: var(--muted); font-size: 0.8rem; margin-top: 0.5rem; }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-photo-wrap { width: 160px; height: 160px; margin: 0 auto; order: -1; }
+      .hero-stats { justify-content: center; }
+      .hero-cta { justify-content: center; }
+      .hero-location { justify-content: center; }
+      .hero-text { max-width: 100%; }
+      .about-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-right .btn { display: none; }
+    }
+  </style>
+</head>
 <body>
 
-    <section id="summary-section" class="summary-area flexible-area"></section>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">MK</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="docs/MD-KAMRUZZAMAN.pdf" download class="btn btn-primary" style="padding:0.45rem 1rem;font-size:0.82rem;">↓ Resume</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
-    <section id="education-section" class="education-area flexible-area"></section>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMobile()">About</a>
+    <a href="#skills" onclick="closeMobile()">Skills</a>
+    <a href="#experience" onclick="closeMobile()">Experience</a>
+    <a href="#education" onclick="closeMobile()">Education</a>
+    <a href="#certifications" onclick="closeMobile()">Certifications</a>
+    <a href="#contact" onclick="closeMobile()">Contact</a>
+    <a href="docs/MD-KAMRUZZAMAN.pdf" download style="color:var(--accent);">↓ Download Resume</a>
+  </div>
 
-    <section class="experience-area">
-        <h2 id="experience-header">Experience</h2>
-        <div id="experience-container" class="flexible-area"></div>
-    </section>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">⚡ Open to Opportunities</div>
+        <h1>Md Kamruzzaman</h1>
+        <div class="hero-typing-wrap">
+          <span id="typing-text"></span><span class="typing-cursor"></span>
+        </div>
+        <p class="hero-location">📍 Wairoa, Hawke's Bay, New Zealand</p>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-number">18+</div>
+            <div class="stat-label">Years Exp.</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">8</div>
+            <div class="stat-label">Companies</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Certifications</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Countries</div>
+          </div>
+        </div>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">Get in Touch</a>
+          <a href="docs/MD-KAMRUZZAMAN.pdf" download class="btn btn-ghost">↓ Download Resume</a>
+          <a href="#experience" class="btn btn-outline">View Experience</a>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <img src="images/kamrul1.png" alt="Md Kamruzzaman" class="hero-photo" />
+      </div>
+    </div>
+  </section>
 
-    <section id="skills-section" class="skills-area"></section>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-dot"></div>
+        <h2>About Me</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid fade-in">
+        <div class="about-text">
+          <p>A seasoned Industrial Electrician and Automation Engineer with over 18 years of hands-on experience across heavy industry, marine engineering, port operations, and physical security — spanning Bangladesh, Singapore, and New Zealand.</p>
+          <p>Currently working at <strong>AFFCO New Zealand Limited</strong>, a high-volume meat processing plant, where I lead electrical maintenance and drive SCADA/PLC improvement projects. I hold a <strong>Bachelor of Technology (Honours)</strong> from the National University of Singapore and an Advanced Diploma in Process Control from Singapore Polytechnic.</p>
+          <p>I thrive at the intersection of hands-on electrical work and industrial automation — maintaining complex control systems, troubleshooting VSDs and motor control circuits, and continuously upskilling through industry certifications.</p>
+        </div>
+        <div class="about-highlights">
+          <div class="highlight-card">
+            <div class="highlight-icon">⚙️</div>
+            <div>
+              <h4>Industrial Automation</h4>
+              <p>PLC systems, SCADA, VFDs, motor control and process automation in live industrial environments</p>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon">🛡️</div>
+            <div>
+              <h4>Security Systems</h4>
+              <p>Access control, CCTV, alarm systems — ICT Protégé WX/GX, Hikvision, Dahua, DSC, Paradox</p>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon">🚢</div>
+            <div>
+              <h4>Marine & Heavy Industry</h4>
+              <p>7+ years at Keppel FELS; HVAC commissioning on marine vessels; port equipment maintenance</p>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon">🎓</div>
+            <div>
+              <h4>Continuous Learning</h4>
+              <p>NUS Honours graduate; active RealPars, Cisco & Udemy certifications in latest automation tech</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="certificates-section" class="certificates-area"></section>
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-dot"></div>
+        <h2>Technical Skills</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid fade-in">
+        <div class="skill-category">
+          <div class="skill-category-header">
+            <span class="skill-category-icon">⚙️</span>
+            <h3>PLC & Automation</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Allen-Bradley PLCs</span>
+            <span class="skill-tag">Schneider M580</span>
+            <span class="skill-tag">Studio 5000</span>
+            <span class="skill-tag">EcoStruxure</span>
+            <span class="skill-tag">PLC Programming</span>
+            <span class="skill-tag">IO-Link</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-header">
+            <span class="skill-category-icon">📊</span>
+            <h3>SCADA & Control</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">SCADA Systems</span>
+            <span class="skill-tag">Process Control</span>
+            <span class="skill-tag">Industrial Automation</span>
+            <span class="skill-tag">VFDs / VSDs</span>
+            <span class="skill-tag">Motor Control</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-header">
+            <span class="skill-category-icon">🔧</span>
+            <h3>Electrical Engineering</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Electrical Maintenance</span>
+            <span class="skill-tag">Fault Finding</span>
+            <span class="skill-tag">Preventive Maintenance</span>
+            <span class="skill-tag">Predictive Maintenance</span>
+            <span class="skill-tag">Control Panels</span>
+            <span class="skill-tag">Schematics</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-header">
+            <span class="skill-category-icon">🛡️</span>
+            <h3>Security Systems</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">ICT Protégé WX/GX</span>
+            <span class="skill-tag">CCTV / IP Cameras</span>
+            <span class="skill-tag">Access Control</span>
+            <span class="skill-tag">Hikvision / Dahua</span>
+            <span class="skill-tag">DSC / Paradox</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-header">
+            <span class="skill-category-icon">🌐</span>
+            <h3>Networking</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">CCNA Certified</span>
+            <span class="skill-tag">Network Automation</span>
+            <span class="skill-tag">Routing & Switching</span>
+            <span class="skill-tag">Industrial Networks</span>
+            <span class="skill-tag">Computer Networking</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-header">
+            <span class="skill-category-icon">🚢</span>
+            <h3>Marine & Industry</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">HVAC Systems</span>
+            <span class="skill-tag">CNC Machinery</span>
+            <span class="skill-tag">Gantry Cranes</span>
+            <span class="skill-tag">Marine Electronics</span>
+            <span class="skill-tag">Instrumentation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p id="footer-text"></p>
-    </footer>
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-dot"></div>
+        <h2>Work Experience</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="timeline fade-in">
 
-    <script src="data.js"></script>
-    <script src="app.js"></script>
+        <div class="timeline-item">
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Industrial Electrician</div>
+                <div class="exp-company">AFFCO New Zealand Limited</div>
+              </div>
+              <span class="exp-badge">Current</span>
+            </div>
+            <div class="exp-meta">
+              <span class="exp-date">📅 Dec 2024 – Present · 1 yr 7 mos</span>
+              <span class="exp-location">📍 Wairoa, Hawke's Bay, NZ · On-site</span>
+            </div>
+            <ul class="exp-desc">
+              <li>Perform installation, maintenance, and troubleshooting of industrial electrical systems in a high-volume meat processing plant</li>
+              <li>Diagnose and repair faults in motors, motor control circuits, VSDs, and control panels to minimize downtime</li>
+              <li>Work with PLC-based automation systems for process control and fault finding</li>
+              <li>Lead SCADA systems improvement projects for monitoring and control</li>
+              <li>Lead a team of electricians, assigning daily tasks and ensuring work is completed safely and efficiently</li>
+              <li>Ensure compliance with New Zealand electrical standards and EWRB regulations</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Electronics Security Technician</div>
+                <div class="exp-company">CSL Security Ltd</div>
+              </div>
+            </div>
+            <div class="exp-meta">
+              <span class="exp-date">📅 Feb 2024 – Nov 2024 · 10 mos</span>
+              <span class="exp-location">📍 Gisborne, New Zealand · On-site</span>
+            </div>
+            <ul class="exp-desc">
+              <li>Installed, configured, and maintained security alarm systems including DSC and Paradox</li>
+              <li>Managed and deployed ICT Protégé WX and GX systems for access control and building security</li>
+              <li>Set up and troubleshot IP-based video surveillance systems including Provision ISR, Hikvision, and Dahua</li>
+              <li>Diagnosed and resolved security system issues ensuring minimal downtime and maximum security</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Engineer, Equipment Maintenance & Planning</div>
+                <div class="exp-company">Jurong Port</div>
+              </div>
+            </div>
+            <div class="exp-meta">
+              <span class="exp-date">📅 Mar 2021 – Oct 2022 · 1 yr 8 mos</span>
+              <span class="exp-location">📍 Singapore · On-site</span>
+            </div>
+            <ul class="exp-desc">
+              <li>Analyzed port equipment and subsystems including PLC control systems, motors, VFDs, and power systems</li>
+              <li>Developed and planned preventive and corrective maintenance strategies to enhance equipment reliability</li>
+              <li>Coordinated with stakeholders for equipment testing, root cause analysis, and improvement initiatives</li>
+              <li>Led maintenance planning and implemented protocols to enhance operational efficiency</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Service Engineer</div>
+                <div class="exp-company">DES Marine Singapore</div>
+              </div>
+            </div>
+            <div class="exp-meta">
+              <span class="exp-date">📅 Jun 2018 – May 2020 · 2 yrs</span>
+              <span class="exp-location">📍 Singapore · On-site</span>
+            </div>
+            <ul class="exp-desc">
+              <li>Provided comprehensive support and troubleshooting for HVAC systems on marine vessels</li>
+              <li>Executed assembly, installation, and commissioning of HVAC systems including ductwork, chillers, and AHUs</li>
+              <li>Managed duct installation project for vessel Heerema Sleipnir at SembCorp's Marine Tuas Boulevard Yard — completed on time</li>
+              <li>Collaborated with client representatives and vessel owners to schedule tasks and allocate manpower</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Electronics Service Engineer</div>
+                <div class="exp-company">Ehsan Marine Pte Ltd</div>
+              </div>
+            </div>
+            <div class="exp-meta">
+              <span class="exp-date">📅 Nov 2016 – Nov 2017 · 1 yr 1 mo</span>
+              <span class="exp-location">📍 Singapore · On-site</span>
+            </div>
+            <ul class="exp-desc">
+              <li>Supervised calibration and servicing of instruments, compiling technical reports and certificates</li>
+              <li>Conducted calibration, repair, and servicing of electrical and pneumatic instruments on cargo ships</li>
+              <li>Evaluated critical shipboard systems including ODME, bilge alarm, temperature and pressure controllers</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Electrician (Technical Services)</div>
+                <div class="exp-company">Keppel FELS Ltd</div>
+              </div>
+            </div>
+            <div class="exp-meta">
+              <span class="exp-date">📅 Dec 2008 – Oct 2016 · 7 yrs 11 mos</span>
+              <span class="exp-location">📍 Singapore</span>
+            </div>
+            <ul class="exp-desc">
+              <li>Organised and implemented preventive maintenance schedules for plant machinery and equipment</li>
+              <li>Assessed and maintained automation systems, CNC-operated plate and pipe cutting machines, and overhead/gantry cranes</li>
+              <li>Identified root causes of defects and implemented cost-effective improvements to prevent recurrence</li>
+              <li>Supervised electrical facility support for new shipbuilding projects</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="exp-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Jr. Engineer (Operation & Maintenance)</div>
+                <div class="exp-company">Navana CNG Limited</div>
+              </div>
+            </div>
+            <div class="exp-meta">
+              <span class="exp-date">📅 Feb 2008 – Dec 2008 · 11 mos</span>
+              <span class="exp-location">📍 Bangladesh · On-site</span>
+            </div>
+            <ul class="exp-desc">
+              <li>Supervised installation and commissioning of electrical control systems for CNG refilling stations</li>
+              <li>Coordinated with customers to schedule manpower and equipment for installation projects</li>
+              <li>Supported Operations Manager with service forms, reports, and breakdown records</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-dot"></div>
+        <h2>Education</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="edu-grid fade-in">
+        <div class="edu-card">
+          <div class="edu-school">National University of Singapore</div>
+          <div class="edu-degree">Bachelor of Technology (BTech), Electronics Engineering</div>
+          <div class="edu-period">📅 2013 – 2020</div>
+          <span class="edu-grade">🏆 Honours</span>
+          <p style="color:var(--muted);font-size:0.85rem;margin-top:0.75rem;line-height:1.6;">
+            Focus on control systems, embedded systems, and industrial communication technologies. Member of NUS ECE Club.
+          </p>
+        </div>
+        <div class="edu-card">
+          <div class="edu-school">Singapore Polytechnic</div>
+          <div class="edu-degree">Advanced Diploma in Engineering, Process Control & Instrumentation</div>
+          <div class="edu-period">📅 2011 – 2012</div>
+          <span class="edu-grade">📊 GPA 3.514 / 4.0</span>
+          <p style="color:var(--muted);font-size:0.85rem;margin-top:0.75rem;line-height:1.6;">
+            Advanced studies in process control, PLC applications, intelligent instrumentation, and digital control systems.
+          </p>
+        </div>
+        <div class="edu-card">
+          <div class="edu-school">Bangladesh Technical Education Board</div>
+          <div class="edu-degree">Diploma in Engineering, Electrical Engineering</div>
+          <div class="edu-period">📅 2003 – 2007</div>
+          <span class="edu-grade">📊 GPA 3.63 / 4.0</span>
+          <p style="color:var(--muted);font-size:0.85rem;margin-top:0.75rem;line-height:1.6;">
+            Foundation in power systems, industrial electronics, control technologies, AC machines, and microprocessor systems.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-dot"></div>
+        <h2>Licenses & Certifications</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="cert-grid fade-in">
+        <div class="cert-card">
+          <div class="cert-icon">🤖</div>
+          <div>
+            <div class="cert-name">IO-Link Essentials: Accelerating Towards Industry 4.0</div>
+            <div class="cert-issuer">RealPars</div>
+            <div class="cert-date">May 2025</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">⚙️</div>
+          <div>
+            <div class="cert-name">Mastering Allen-Bradley PLCs</div>
+            <div class="cert-issuer">RealPars</div>
+            <div class="cert-date">Jul 2025</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">⚙️</div>
+          <div>
+            <div class="cert-name">Mastering Schneider M580 PLC with EcoStruxure</div>
+            <div class="cert-issuer">RealPars</div>
+            <div class="cert-date">Jul 2025</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">💻</div>
+          <div>
+            <div class="cert-name">Learn How to Program Allen Bradley PLCs Using Studio 5000</div>
+            <div class="cert-issuer">RealPars</div>
+            <div class="cert-date">Jul 2025</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">📊</div>
+          <div>
+            <div class="cert-name">Learning SCADA: Collect, Analyze, and Visualize Data</div>
+            <div class="cert-issuer">LinkedIn Learning</div>
+            <div class="cert-date">Apr 2025</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">🌐</div>
+          <div>
+            <div class="cert-name">CCNA: Enterprise Networking, Security, and Automation</div>
+            <div class="cert-issuer">Cisco</div>
+            <div class="cert-date">Dec 2023</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">🌐</div>
+          <div>
+            <div class="cert-name">Networking Basics</div>
+            <div class="cert-issuer">Cisco</div>
+            <div class="cert-date">Jan 2024</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">🛡️</div>
+          <div>
+            <div class="cert-name">Certified Protege WXpert (Level 2)</div>
+            <div class="cert-issuer">Integrated Control Technology</div>
+            <div class="cert-date">Jun 2024</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">📷</div>
+          <div>
+            <div class="cert-name">Security Camera Systems</div>
+            <div class="cert-issuer">Udemy</div>
+            <div class="cert-date">Oct 2024</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">📋</div>
+          <div>
+            <div class="cert-name">Certificate of Approval — Security Technician</div>
+            <div class="cert-issuer">Private Security Personnel Licensing Authority (PSPLA)</div>
+            <div class="cert-date">Apr 2024 · Expires Apr 2029</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">🩺</div>
+          <div>
+            <div class="cert-name">Essential First Aid Course</div>
+            <div class="cert-issuer">New Zealand Red Cross</div>
+            <div class="cert-date">Dec 2024 · Expires Dec 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-dot"></div>
+        <h2>Get in Touch</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="contact-inner fade-in">
+        <p>I'm open to new opportunities in industrial automation, electrical engineering, and PLC/SCADA roles. Feel free to reach out via email or LinkedIn — I'd love to connect.</p>
+        <div class="contact-cards">
+          <a href="mailto:kamrul4188@gmail.com" class="contact-card">
+            <div class="contact-card-icon">✉️</div>
+            <div>
+              <div class="contact-card-label">Email</div>
+              <div class="contact-card-value">kamrul4188@gmail.com</div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/kamrul4188/" target="_blank" class="contact-card">
+            <div class="contact-card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </div>
+            <div>
+              <div class="contact-card-label">LinkedIn</div>
+              <div class="contact-card-value">linkedin.com/in/kamrul4188</div>
+            </div>
+          </a>
+          <a href="docs/MD-KAMRUZZAMAN.pdf" download class="contact-card">
+            <div class="contact-card-icon">📄</div>
+            <div>
+              <div class="contact-card-label">Resume</div>
+              <div class="contact-card-value">Download PDF</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-name">Md Kamruzzaman</div>
+    <div style="color:var(--muted);font-size:0.85rem;">Industrial Electrician · PLC & SCADA Automation · Wairoa, New Zealand</div>
+    <div class="footer-copy">© 2026 Md Kamruzzaman</div>
+  </footer>
+
+  <script>
+    // ---- Typing animation ----
+    const phrases = [
+      'Industrial Electrician',
+      'PLC & SCADA Automation Engineer',
+      '18 Years Industrial Experience',
+      'NUS BTech Electronics (Honours)',
+    ];
+    let phraseIdx = 0, charIdx = 0, deleting = false;
+    const typingEl = document.getElementById('typing-text');
+
+    function type() {
+      const current = phrases[phraseIdx];
+      if (!deleting) {
+        typingEl.textContent = current.slice(0, ++charIdx);
+        if (charIdx === current.length) {
+          deleting = true;
+          setTimeout(type, 1800);
+          return;
+        }
+      } else {
+        typingEl.textContent = current.slice(0, --charIdx);
+        if (charIdx === 0) {
+          deleting = false;
+          phraseIdx = (phraseIdx + 1) % phrases.length;
+        }
+      }
+      setTimeout(type, deleting ? 45 : 75);
+    }
+    type();
+
+    // ---- Hamburger menu ----
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    function closeMobile() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+
+    // ---- Scroll fade-in ----
+    const fadeObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+    // ---- Active nav highlight ----
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const navObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => navObs.observe(s));
+  </script>
 
 </body>
-
 </html>
